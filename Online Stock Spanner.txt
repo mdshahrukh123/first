@@ -1,0 +1,26 @@
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution. */
+        Scanner sc=new Scanner(System.in);
+        int n=sc.nextInt();
+        int arr[]=new int[n];
+        for(int i=0;i<n;i++){
+             onlineSpanner(sc.nextInt());
+        }
+        
+    }
+    public static Stack<int[]>st=new Stack<>();
+    
+    public static void onlineSpanner(int price){
+         int count=1;
+        while(st.size()>0 && st.peek()[0]<=price){
+            count+=st.pop()[1];
+        }
+        st.push(new int[] {price,count});
+        System.out.print(count+" ");
+    }
+}
